@@ -1,4 +1,6 @@
-<properties umbracoNaviHide="0" pageTitle="How to Configure Websites" metaKeywords="Windows Azure Websites, Azure deployment, Azure configuration changes, Azure deployment update, Windows Azure .NET deployment, Azure .NET deployment" metaDescription="Learn how to configure Websites in Windows Azure to use a SQL or MySQL database, and learn how to configure diagnostics and download logs." linkid="itpro-windows-howto-configure-websites" urlDisplayName="How to Configure Websites" headerExpose="" footerExpose="" disqusComments="1" />
+<properties linkid="manage-services-how-to-configure-websites" urlDisplayName="How to configure" pageTitle="How to configure web sites - Windows Azure service management" metaKeywords="Azure websites, configuring Azure websites, Azure SQL database, Azure MySQL" metaDescription="Learn how to configure web sites in Windows Azure, including how to configure a web site to use a SQL Database or MySQL database." metaCanonical="" disqusComments="1" umbracoNaviHide="0" />
+
+
 
 # How to Configure Websites #
 
@@ -45,9 +47,12 @@ Follow these steps to change configuration options for a website.
 	<li><strong>App Settings</strong> – Specify name/value pairs that will be loaded by your web application on start up. For .NET sites, these settings will be 
 	injected into your .NET configuration AppSettings at runtime, overriding existing settings. For PHP and Node sites these settings will be 
 	available as environment variables at runtime.</li>
-	<li><strong>Connections Strings</strong> – View connection strings for linked resources. For .NET sites, these connection strings will be injected into your 
-	.NET configuration connectionStrings settings at runtime, overriding existing entries where the key equals the linked database name. For PHP 
-	and Node sites these settings will be available as environment variables at runtime.<br />
+	<li><strong>Connections Strings</strong> – View connection strings for linked resources. For .NET sites, these connection strings will be injected into your .NET configuration connectionStrings settings at runtime, overriding existing entries where the key equals the linked database name. For PHP 
+	and Node sites these settings will be available as environment variables at runtime, prefixed with the connection type. The environment variable prefixes are as follows: <br />
+<ul><li>SqlServer: SQLCONNSTR_</li>
+<li>MySql: MYSQLCONNSTR_</li>
+<li>Sql Azure: SQLAZURECONNSTR_</li>
+<li>Custom: CUSTOMCONNSTR_</li></ul>For example, if a MySql connection string were named connectionstring1, it would be accessed through the environment variable <code>MYSQLCONNSTR_connectionString1</code>.
 	<strong>Note</strong><br />Connection strings are created when you link a database resource to a website and are read only when viewed on the 
 	configuration management page.</li>
 	<li><strong>Default Documents</strong> – Add your website's default document to this list if it is not already in the list. A website’s default 
